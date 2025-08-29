@@ -1,0 +1,2 @@
+0 2 * * 0 /alx_backend_graphql_crm/crm/cronjobs/cleaninactivecustomers.sh
+

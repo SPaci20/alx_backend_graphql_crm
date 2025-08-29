@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Navigate to project root (assuming this script is inside crm/cron_jobs)
+# Go to project root (two levels up from cronjobs folder)
 cd "$(dirname "$0")/../.."
 
-# Run Django shell command to delete inactive customers
+# Run Django shell to delete inactive customers
 DELETED_COUNT=$(python3 manage.py shell -c "
 import datetime
 from crm.models import Customer, Order
@@ -19,5 +19,6 @@ inactive_customers.delete()
 print(count)
 ")
 
-# Log the result with timestamp
-echo \"\$(date '+%Y-%m-%d %H:%M:%S') - Deleted \$DELETED_COUNT inactive customers\" >> /tmp/customer_cleanup_log.txt
+# Log with timestamp
+echo \"\$(date '+%Y-%m-%d %H:%M:%S') - Deleted \$DELETED_COUNT inactive customers\" >> /tmp/customercleanuplog.txt
+
